@@ -1,8 +1,9 @@
 import './public-path' // 注意需要引入public-path
+import globalRegister from './store/global-register'
 import Vue from 'vue'
 import App from './App.vue'
 import routes from './router'
-// import store from './store'
+import store from './store'
 import VueRouter from 'vue-router'
 
 Vue.config.productionTip = false
@@ -18,7 +19,7 @@ function render (props = {}) {
   })
   instance = new Vue({
     router,
-    // store,
+    store,
     render: (h) => h(App)
   }).$mount(container ? container.querySelector('#app') : '#app')
 }
@@ -32,9 +33,10 @@ export async function bootstrap () {
 }
 
 export async function mount (props) {
-  console.log('[vue] props from main framework', props)
-
+  // console.log('[vue] props from main framework', props)
+  console.log(store.hasModule('user'))
   render(props)
+  globalRegister(store, props)
 }
 
 export async function unmount () {

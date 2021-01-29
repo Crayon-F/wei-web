@@ -12,7 +12,7 @@
       <div>
         <router-view></router-view>
       </div>
-    <div id="vue"></div>
+    <div id="subapp-viewport"></div>
   </div>
   </div>
 </template>
